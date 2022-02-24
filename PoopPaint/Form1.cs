@@ -23,6 +23,7 @@ namespace PoopPaint
         public static SKCanvas canvasOverlay;
 
         public static SKPoint mousePos;
+        public static SKColor color;
 
         public static Random rng = new Random();
 
@@ -53,6 +54,8 @@ namespace PoopPaint
             mainLayerBox.Image = bmp.ToBitmap();
             overlayBox.Image = bmpOverlay.ToBitmap();
             mousePos = new SKPoint(mainLayerBox.PointToClient(Cursor.Position).X, mainLayerBox.PointToClient(Cursor.Position).Y);
+            color = new SKColor(colorDialog1.Color.R, colorDialog1.Color.G, colorDialog1.Color.B, colorDialog1.Color.A);
+            colorPanel.BackColor = colorDialog1.Color;
 
             if (selectedTool == null) return;
             selectedTool.Update();
@@ -61,6 +64,12 @@ namespace PoopPaint
         private void button1_Click(object sender, EventArgs e)
         {
             selectedTool = new PenTool();
+            UpdateSelectedTool();
+        }
+
+        private void UpdateSelectedTool()
+        {
+            toolStripStatusLabel1.Text = "Selected Tool: " + selectedTool.ToolName;
             UpdateSettings();
         }
 
@@ -132,6 +141,11 @@ namespace PoopPaint
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            colorDialog1.ShowDialog();
         }
     }
 }

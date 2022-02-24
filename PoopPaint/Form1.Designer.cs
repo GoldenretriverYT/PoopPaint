@@ -35,9 +35,15 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.overlayBox = new System.Windows.Forms.PictureBox();
             this.toolGroupBoxes = new System.Windows.Forms.GroupBox();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.colorPanel = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainLayerBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.overlayBox)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -45,7 +51,7 @@
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Location = new System.Drawing.Point(12, 70);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(49, 434);
+            this.groupBox1.Size = new System.Drawing.Size(64, 391);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tools";
@@ -55,7 +61,7 @@
             // 
             this.button1.Location = new System.Drawing.Point(7, 20);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(36, 23);
+            this.button1.Size = new System.Drawing.Size(51, 23);
             this.button1.TabIndex = 0;
             this.button1.Text = "Pen";
             this.button1.UseVisualStyleBackColor = true;
@@ -64,9 +70,9 @@
             // mainLayerBox
             // 
             this.mainLayerBox.BackColor = System.Drawing.Color.White;
-            this.mainLayerBox.Location = new System.Drawing.Point(67, 76);
+            this.mainLayerBox.Location = new System.Drawing.Point(82, 70);
             this.mainLayerBox.Name = "mainLayerBox";
-            this.mainLayerBox.Size = new System.Drawing.Size(720, 426);
+            this.mainLayerBox.Size = new System.Drawing.Size(854, 426);
             this.mainLayerBox.TabIndex = 1;
             this.mainLayerBox.TabStop = false;
             this.mainLayerBox.Click += new System.EventHandler(this.pictureBox1_Click);
@@ -84,7 +90,7 @@
             this.overlayBox.BackColor = System.Drawing.Color.Transparent;
             this.overlayBox.Location = new System.Drawing.Point(68, 498);
             this.overlayBox.Name = "overlayBox";
-            this.overlayBox.Size = new System.Drawing.Size(720, 426);
+            this.overlayBox.Size = new System.Drawing.Size(854, 426);
             this.overlayBox.TabIndex = 2;
             this.overlayBox.TabStop = false;
             this.overlayBox.Click += new System.EventHandler(this.overlayBox_Click);
@@ -95,16 +101,52 @@
             // 
             this.toolGroupBoxes.Location = new System.Drawing.Point(12, 2);
             this.toolGroupBoxes.Name = "toolGroupBoxes";
-            this.toolGroupBoxes.Size = new System.Drawing.Size(775, 62);
+            this.toolGroupBoxes.Size = new System.Drawing.Size(924, 62);
             this.toolGroupBoxes.TabIndex = 3;
             this.toolGroupBoxes.TabStop = false;
             this.toolGroupBoxes.Text = "Tool settings";
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 507);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(948, 22);
+            this.statusStrip1.TabIndex = 4;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(111, 17);
+            this.toolStripStatusLabel1.Text = "Selected Tool: None";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(19, 469);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(57, 35);
+            this.button2.TabIndex = 5;
+            this.button2.Text = "Change Color";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // colorPanel
+            // 
+            this.colorPanel.Location = new System.Drawing.Point(10, 470);
+            this.colorPanel.Name = "colorPanel";
+            this.colorPanel.Size = new System.Drawing.Size(10, 32);
+            this.colorPanel.TabIndex = 6;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 512);
+            this.ClientSize = new System.Drawing.Size(948, 529);
+            this.Controls.Add(this.colorPanel);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolGroupBoxes);
             this.Controls.Add(this.overlayBox);
             this.Controls.Add(this.mainLayerBox);
@@ -115,7 +157,10 @@
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.mainLayerBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.overlayBox)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -127,6 +172,11 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.PictureBox overlayBox;
         private System.Windows.Forms.GroupBox toolGroupBoxes;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ColorDialog colorDialog1;
+        private System.Windows.Forms.Panel colorPanel;
     }
 }
 
