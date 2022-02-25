@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.mainLayerBox = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -48,6 +49,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Location = new System.Drawing.Point(12, 70);
             this.groupBox1.Name = "groupBox1";
@@ -56,6 +58,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tools";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(7, 49);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(51, 23);
+            this.button3.TabIndex = 1;
+            this.button3.Text = "Eraser";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button1
             // 
@@ -77,6 +89,8 @@
             this.mainLayerBox.TabStop = false;
             this.mainLayerBox.Click += new System.EventHandler(this.pictureBox1_Click);
             this.mainLayerBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
+            this.mainLayerBox.MouseEnter += new System.EventHandler(this.DrawingZoneMouseEnter);
+            this.mainLayerBox.MouseLeave += new System.EventHandler(this.DrawingZoneMouseLeave);
             this.mainLayerBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
             // 
             // timer1
@@ -95,6 +109,8 @@
             this.overlayBox.TabStop = false;
             this.overlayBox.Click += new System.EventHandler(this.overlayBox_Click);
             this.overlayBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.overlayBox_MouseDown);
+            this.overlayBox.MouseEnter += new System.EventHandler(this.DrawingZoneMouseEnter);
+            this.overlayBox.MouseLeave += new System.EventHandler(this.DrawingZoneMouseLeave);
             this.overlayBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.overlayBox_MouseUp);
             // 
             // toolGroupBoxes
@@ -177,6 +193,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.Panel colorPanel;
+        private System.Windows.Forms.Button button3;
     }
 }
 

@@ -41,7 +41,7 @@ namespace PoopPaint
             canvas = new SKCanvas(bmp);
 
             bmpOverlay = new SKBitmap(overlayBox.Size.Width, mainLayerBox.Size.Height, false);
-            canvasOverlay = new SKCanvas(bmp);
+            canvasOverlay = new SKCanvas(bmpOverlay);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -57,13 +57,22 @@ namespace PoopPaint
             color = new SKColor(colorDialog1.Color.R, colorDialog1.Color.G, colorDialog1.Color.B, colorDialog1.Color.A);
             colorPanel.BackColor = colorDialog1.Color;
 
+            Form1.canvasOverlay.Clear(new SKColor(255, 255, 255, 0));
+
             if (selectedTool == null) return;
+            selectedTool.UpdateOverlay();
             selectedTool.Update();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             selectedTool = new PenTool();
+            UpdateSelectedTool();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            selectedTool = new EraserTool();
             UpdateSelectedTool();
         }
 
@@ -146,6 +155,21 @@ namespace PoopPaint
         private void button2_Click(object sender, EventArgs e)
         {
             colorDialog1.ShowDialog();
+        }
+
+        private void DrawingZoneMouseEnter(object sender, EventArgs e)
+        {
+            Console.WriteLine("Mouse enter");
+            if (selectedTool != null)
+            {
+                Console.WriteLine("Hide mouse");
+                PoopCursor.CursorShown = false;
+            }
+        }
+
+        private void DrawingZoneMouseLeave(object sender, EventArgs e)
+        {
+            PoopCursor.CursorShown = true;
         }
     }
 }

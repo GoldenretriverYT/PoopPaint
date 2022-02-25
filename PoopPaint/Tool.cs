@@ -14,5 +14,6 @@ namespace PoopPaint
         public abstract void StartUsing();
         public abstract void StopUsing();
         public abstract void Update();
+        public abstract void UpdateOverlay();
     }
 }

@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace PoopPaint
 {
-    public class PenTool : Tool
+    public class EraserTool : Tool
     {
         public bool isBeingUsed = false;
         public SKPoint previousPos;
         public SKPaint skPaint = new SKPaint();
         public SKPaint skPaintOverlay = new SKPaint();
 
-        public override string ToolName => "Pen";
+        public override string ToolName => "Eraser";
 
-        public override string ToolDescription => "Pen draws simple dot";
+        public override string ToolDescription => "Eraser erases stuff";
 
         public override Dictionary<string, ToolSetting> PublicSettings => settings;
 
@@ -25,7 +25,7 @@ namespace PoopPaint
             {"size", new NumericToolSetting(1, 250, (int)GlobalStore.Get("size", 5)) }
         };
 
-        public PenTool()
+        public EraserTool()
         {
             skPaintOverlay.Color = new SKColor(0, 0, 0);
             skPaintOverlay.Style = SKPaintStyle.Stroke;
@@ -36,6 +36,8 @@ namespace PoopPaint
         {
             isBeingUsed = true;
             previousPos = new SKPoint(-1, -1);
+            skPaint.Color = new SKColor(255, 255, 255, 0);
+            skPaint.BlendMode = SKBlendMode.Src;
         }
 
         public override void StopUsing()
@@ -49,7 +51,6 @@ namespace PoopPaint
 
             if (previousPos != null && previousPos.X != -1)
             {
-                skPaint.Color = Form1.color;
                 Line line = new Line(previousPos, Form1.mousePos);
                 SKPoint[] points = line.GetPoints(Math.Max(2, (int)SKPoint.Distance(line.p1, line.p2)));
 

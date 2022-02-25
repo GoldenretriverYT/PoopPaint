@@ -100,6 +100,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PoopCursor.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +110,7 @@
     <Compile Include="GlobalStore.cs" />
     <Compile Include="Line.cs" />
     <Compile Include="NumericToolSetting.cs" />
+    <Compile Include="EraserTool.cs" />
     <Compile Include="PenTool.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
