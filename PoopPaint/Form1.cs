@@ -37,6 +37,11 @@ namespace PoopPaint
             overlayBox.Location = new Point(0, 0);
             overlayBox.BackColor = Color.Transparent;
 
+            ResetCanvas();
+        }
+
+        public void ResetCanvas()
+        {
             bmp = new SKBitmap(mainLayerBox.Size.Width, mainLayerBox.Size.Height);
             canvas = new SKCanvas(bmp);
 
@@ -170,6 +175,47 @@ namespace PoopPaint
         private void DrawingZoneMouseLeave(object sender, EventArgs e)
         {
             PoopCursor.CursorShown = true;
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void createNewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ResetCanvas();
+        }
+
+        private void openFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.ShowDialog();
+        }
+
+        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+            SKBitmap.Decode(openFileDialog1.OpenFile()).ScalePixels(bmp, SKFilterQuality.High);
+        }
+
+        private void saveFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.ShowDialog();
+        }
+
+        private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+            if (saveFileDialog1.FileName.EndsWith(".bmp"))
+            {
+                bmp.ToBitmap().Save(saveFileDialog1.FileName);
+            }
+            else if(saveFileDialog1.FileName.EndsWith(".png"))
+            {
+                bmp.Encode(SKEncodedImageFormat.Png, 100).SaveTo(saveFileDialog1.OpenFile());
+            }
+            else if(saveFileDialog1.FileName.EndsWith(".jpg") || saveFileDialog1.FileName.EndsWith(".jpeg"))
+            {
+                bmp.Encode(SKEncodedImageFormat.Jpeg, 100).SaveTo(saveFileDialog1.OpenFile());
+            }
         }
     }
 }
