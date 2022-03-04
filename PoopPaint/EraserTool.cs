@@ -47,6 +47,8 @@ namespace PoopPaint
 
         public override void Update()
         {
+            GlobalStore.Set("size", Decimal.ToInt32((decimal)settings["size"].GetValue()));
+
             if (!isBeingUsed) return;
 
             if (previousPos != null && previousPos.X != -1)
