@@ -30,9 +30,9 @@ namespace PoopPaint
             this.numericUpDown = new NumericUpDown
             {
                 Size = new System.Drawing.Size(100, 30),
-                Value = defaultValue,
                 Minimum = min,
-                Maximum = max
+                Maximum = max,
+                Value = defaultValue,
             };
         }
 
