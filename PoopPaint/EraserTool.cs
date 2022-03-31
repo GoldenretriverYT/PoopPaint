@@ -18,9 +18,9 @@ namespace PoopPaint
 
         public override string ToolDescription => "Eraser erases stuff";
 
-        public override Dictionary<string, ToolSetting> PublicSettings => settings;
+        public override Dictionary<string, ToolSetting> PublicSettings => _settings;
 
-        private Dictionary<string, ToolSetting> settings = new Dictionary<string, ToolSetting>
+        private readonly Dictionary<string, ToolSetting> _settings = new Dictionary<string, ToolSetting>
         {
             {"size", new NumericToolSetting(1, 250, (int)GlobalStore.Get("size", 5)) }
         };
@@ -47,7 +47,7 @@ namespace PoopPaint
 
         public override void Update()
         {
-            GlobalStore.Set("size", Decimal.ToInt32((decimal)settings["size"].GetValue()));
+            GlobalStore.Set("size", Decimal.ToInt32((decimal)_settings["size"].GetValue()));
 
             if (!isBeingUsed) return;
 
@@ -57,11 +57,11 @@ namespace PoopPaint
                 SKPoint[] points = line.GetPoints(Math.Max(2, (int)SKPoint.Distance(line.p1, line.p2)));
 
                 foreach(SKPoint point in points) {
-                    Form1.canvas.DrawCircle(point, Decimal.ToInt32((decimal)settings["size"].GetValue()), skPaint);
+                    Form1.canvas.DrawCircle(point, Decimal.ToInt32((decimal)_settings["size"].GetValue()), skPaint);
                 }
             }
             else {
-                Form1.canvas.DrawCircle(Form1.mousePos, Decimal.ToInt32((decimal)settings["size"].GetValue()), skPaint);
+                Form1.canvas.DrawCircle(Form1.mousePos, Decimal.ToInt32((decimal)_settings["size"].GetValue()), skPaint);
             }
 
             previousPos = Form1.mousePos;
@@ -69,7 +69,7 @@ namespace PoopPaint
 
         public override void UpdateOverlay()
         {
-            Form1.canvasOverlay.DrawCircle(Form1.mousePos, Decimal.ToInt32((decimal)settings["size"].GetValue()), skPaintOverlay);
+            Form1.canvasOverlay.DrawCircle(Form1.mousePos, Decimal.ToInt32((decimal)_settings["size"].GetValue()), skPaintOverlay);
         }
     }
 }
