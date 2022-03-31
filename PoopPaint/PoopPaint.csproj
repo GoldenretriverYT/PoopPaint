@@ -114,6 +114,12 @@
     <Compile Include="PenTool.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScaleDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScaleDialog.Designer.cs">
+      <DependentUpon>ScaleDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tool.cs" />
     <Compile Include="ToolSetting.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -128,6 +134,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ScaleDialog.resx">
+      <DependentUpon>ScaleDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="licenses\README.md" />
     <None Include="licenses\SkiaSharp.LICENSE" />
     <None Include="OpenTK.dll.config" />

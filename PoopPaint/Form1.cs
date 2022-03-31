@@ -49,6 +49,17 @@ namespace PoopPaint
             canvasOverlay = new SKCanvas(bmpOverlay);
         }
 
+        public void ResizeCanvas()
+        {
+            SKBitmap oldBmp = bmp;
+            bmp = new SKBitmap(mainLayerBox.Size.Width, mainLayerBox.Size.Height);
+            oldBmp.ScalePixels(bmp, SKFilterQuality.High);
+            canvas = new SKCanvas(bmp);
+
+            bmpOverlay = new SKBitmap(overlayBox.Size.Width, mainLayerBox.Size.Height, false);
+            canvasOverlay = new SKCanvas(bmpOverlay);
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -216,6 +227,12 @@ namespace PoopPaint
             {
                 bmp.Encode(SKEncodedImageFormat.Jpeg, 100).SaveTo(saveFileDialog1.OpenFile());
             }
+        }
+
+        private void mainLayerBox_SizeChanged(object sender, EventArgs e)
+        {
+            overlayBox.Size = mainLayerBox.Size;
+            ResizeCanvas();
         }
     }
 }

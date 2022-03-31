@@ -51,6 +51,9 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.scaleToToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setDrawingSizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainLayerBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.overlayBox)).BeginInit();
@@ -92,12 +95,16 @@
             // 
             // mainLayerBox
             // 
+            this.mainLayerBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.mainLayerBox.BackColor = System.Drawing.Color.White;
             this.mainLayerBox.Location = new System.Drawing.Point(82, 99);
             this.mainLayerBox.Name = "mainLayerBox";
             this.mainLayerBox.Size = new System.Drawing.Size(854, 426);
             this.mainLayerBox.TabIndex = 1;
             this.mainLayerBox.TabStop = false;
+            this.mainLayerBox.SizeChanged += new System.EventHandler(this.mainLayerBox_SizeChanged);
             this.mainLayerBox.Click += new System.EventHandler(this.pictureBox1_Click);
             this.mainLayerBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
             this.mainLayerBox.MouseEnter += new System.EventHandler(this.DrawingZoneMouseEnter);
@@ -169,7 +176,8 @@
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripDropDownButton1});
+            this.toolStripDropDownButton1,
+            this.toolStripDropDownButton2});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(948, 25);
@@ -194,33 +202,33 @@
             // createNewToolStripMenuItem
             // 
             this.createNewToolStripMenuItem.Name = "createNewToolStripMenuItem";
-            this.createNewToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.createNewToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.createNewToolStripMenuItem.Text = "Create new";
             this.createNewToolStripMenuItem.Click += new System.EventHandler(this.createNewToolStripMenuItem_Click);
             // 
             // openFileToolStripMenuItem
             // 
             this.openFileToolStripMenuItem.Name = "openFileToolStripMenuItem";
-            this.openFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openFileToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.openFileToolStripMenuItem.Text = "Open file";
             this.openFileToolStripMenuItem.Click += new System.EventHandler(this.openFileToolStripMenuItem_Click);
             // 
             // saveFileToolStripMenuItem
             // 
             this.saveFileToolStripMenuItem.Name = "saveFileToolStripMenuItem";
-            this.saveFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveFileToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.saveFileToolStripMenuItem.Text = "Save file";
             this.saveFileToolStripMenuItem.Click += new System.EventHandler(this.saveFileToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(130, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -234,6 +242,31 @@
             this.saveFileDialog1.DefaultExt = "png";
             this.saveFileDialog1.Filter = "BMP|*.bmp|PNG|*.png|JPEG|*.jpg;*.jpeg";
             this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
+            // 
+            // toolStripDropDownButton2
+            // 
+            this.toolStripDropDownButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripDropDownButton2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.scaleToToolStripMenuItem,
+            this.setDrawingSizeToolStripMenuItem});
+            this.toolStripDropDownButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton2.Image")));
+            this.toolStripDropDownButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton2.Name = "toolStripDropDownButton2";
+            this.toolStripDropDownButton2.Size = new System.Drawing.Size(53, 22);
+            this.toolStripDropDownButton2.Text = "Image";
+            this.toolStripDropDownButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // scaleToToolStripMenuItem
+            // 
+            this.scaleToToolStripMenuItem.Name = "scaleToToolStripMenuItem";
+            this.scaleToToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.scaleToToolStripMenuItem.Text = "Scale to";
+            // 
+            // setDrawingSizeToolStripMenuItem
+            // 
+            this.setDrawingSizeToolStripMenuItem.Name = "setDrawingSizeToolStripMenuItem";
+            this.setDrawingSizeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.setDrawingSizeToolStripMenuItem.Text = "Set drawing size";
             // 
             // Form1
             // 
@@ -286,6 +319,9 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton2;
+        private System.Windows.Forms.ToolStripMenuItem scaleToToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem setDrawingSizeToolStripMenuItem;
     }
 }
 
